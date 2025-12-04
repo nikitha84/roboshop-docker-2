@@ -1,7 +1,7 @@
 services:
   catalogue:
     build:
-      contex: ./catalogue
+      context: ./catalogue
       dockerfile: Dockerfile
     image: catalogue:v1
     container_name: catalogue
@@ -36,7 +36,7 @@ services:
      RABBITMQ_DEFAULT_PASS: roboshop123
   user:
   build:
-    contex: ./user
+    context: ./user
     dockerfile: Dockerfile
     image: user:v1
     container_name: user
