@@ -16,8 +16,8 @@ services:
     - mongodb:/data/db #container path stord in host path
 
   redis: #-- name mongodb
-    build: ./redis
-    image: nikitha84/redis:v1  #image
+  
+    image: nikitha84/redis:latest #image
     container_name: redis
     volumes:
     - redis:/data
