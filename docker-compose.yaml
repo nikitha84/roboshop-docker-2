@@ -50,7 +50,7 @@ services:
     image: nikitha84/cart:v1
     container_name: cart
     depends_on:
-    - redis
+    # - redis
     - catalogue
   # shipping:
   #   image: shipping:v1
