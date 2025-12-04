@@ -38,10 +38,10 @@ services:
     build:
       context: ./user
       dockerfile: Dockerfile
-      image: user:v1
-      container_name: user
-      depends_on:
-      - redis 
+    image: user:v1
+    container_name: user
+    depends_on:
+    - redis 
   cart:
     image: cart:v1
     container_name: cart
