@@ -17,7 +17,7 @@ services:
 
   redis: #-- name mongodb
     build: ./redis
-    image: redis:v1  #image
+    image: nikitha84/redis:v1  #image
     container_name: redis
     volumes:
     - redis:/data
