@@ -73,16 +73,16 @@ services:
     - shipping
     - payment
 
-  networks:
+networks:
   default: #set as roboshop n/w is default n/w
     driver: bridge
     name: roboshop
     extranal: false #true: if u create manually n/w using docker create network roboshop cmd.now i m saying to docker compose create n/w
-  volumes:
-    mongodb: #docker host path
-    redis:
-    rabbitmq:
-    mysql:
+volumes:
+  mongodb: #docker host path
+  redis:
+  rabbitmq:
+  mysql:
 
 
 
