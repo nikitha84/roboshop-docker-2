@@ -1,0 +1,88 @@
+services:
+  catalogue:
+    build:
+      contex: ./catalogue
+      dockerfile: Dockerfile
+    image: catalogue:v1
+    container_name: catalogue
+    depends_on:
+    - mongodb  #here dependency is mongodb.so 1st mongodb will created 2nd catalogue
+  mongodb: #-- name mongodb
+    build: ./mongodb
+    image: nikitha84/mongodb:v1  #image push in dockerhub
+    container_namee: mongodb
+    volumes:
+    - mongodb:/data/db #container path stord in host path
+
+  redis: #-- name mongodb
+    build: ./redis
+    image: redis:v1  #image
+    container_namee: redis
+    volumes:
+    - redis:/data
+  mysql: #-- name mongodb
+    build: ./mysql
+    image: mysql:v1  #image
+    container_namee: mysql
+    volumes:
+    - mysql:/var/lib/mysql
+  rabbitmq: #-- name mongodb
+    image: rabbitmq:v1  #image
+    container_namee: rabbitmq
+    volumes:
+    - rabbitmq:/var/lib/rabbitmq
+    environment:
+     RABBITMQ_DEFAULT_USER: roboshop
+     RABBITMQ_DEFAULT_PASS: roboshop123
+  user:
+  build:
+    contex: ./user
+    dockerfile: Dockerfile
+    image: user:v1
+    container_name: user
+    depends_on:
+    - redis 
+  cart:
+    image: cart:v1
+    container_name: cart
+    depends_on:
+    - redis
+    - catalogue
+  shipping:
+    image: shipping:v1
+    container_name: shipping
+    depends_on:
+    - mysql
+    - cart
+  payment:
+    image: payment:v1
+    container_name: payment
+    depends_on:
+    - rabbitmq
+    - cart
+    - user
+  frontend:
+    image: frontend:v1
+    container_name: frontend
+    ports:
+    - "80:80"
+    depends_on:
+    - catalogue
+    - cart
+    - user
+    - shipping
+    - payment
+
+  networks:
+  default: #set as roboshop n/w is default n/w
+    driver: bridge
+    name: roboshop
+    extranal: false #true: if u create manually n/w using docker create network roboshop cmd.now i m saying to docker compose create n/w
+  volumes:
+    mongodb: #docker host path
+    redis:
+    rabbitmq:
+    mysql:
+
+
+
