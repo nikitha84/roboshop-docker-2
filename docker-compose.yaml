@@ -80,9 +80,9 @@ services:
 
 networks:
   default: #set as roboshop n/w is default n/w
+    external: false
     driver: bridge
-    name: roboshop
-    external: false #true: if u create manually n/w using docker create network roboshop cmd.now i m saying to docker compose create n/w
+    name: roboshop #true: if u create manually n/w using docker create network roboshop cmd.now i m saying to docker compose create n/w
 volumes:
   mongodb: #docker host path
   redis:
