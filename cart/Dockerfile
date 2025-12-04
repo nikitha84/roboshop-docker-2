@@ -20,7 +20,7 @@ ENV REDIS_HOST="redis" \
 COPY --from=build /opt/server /opt/server 
 USER roboshop
 CMD ["server.js"]  
-ENTRYPOIT ["node"]
+ENTRYPOINT ["node"]
 
 
 # FROM node:20
