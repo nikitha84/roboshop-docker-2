@@ -15,12 +15,12 @@ services:
     volumes:
     - mongodb:/data/db #container path stord in host path
 
-  redis: #-- name mongodb
-    build: ./redis
-    image: redis:v1  #image
-    container_name: redis
-    volumes:
-    - redis:/data
+  # redis: #-- name mongodb
+  #   build: ./redis
+  #   image: redis:v1  #image
+  #   container_name: redis
+  #   volumes:
+  #   - redis:/data
 
   # mysql: #-- name mongodb
   #   build: ./mysql
@@ -38,14 +38,14 @@ services:
   #    RABBITMQ_DEFAULT_USER: roboshop
   #    RABBITMQ_DEFAULT_PASS: roboshop123
 
-  user:
-    build:
-      context: ./user
-      dockerfile: Dockerfile
-    image: nikitha84/user:v1
-    container_name: user
-    depends_on:
-    - redis 
+  # user:
+  #   build:
+  #     context: ./user
+  #     dockerfile: Dockerfile
+  #   image: nikitha84/user:v1
+  #   container_name: user
+  #   depends_on:
+  #   - redis 
   cart:
     image: nikitha84/cart:v1
     container_name: cart
